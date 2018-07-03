@@ -8,17 +8,17 @@ Dark green: #28b485
 */
 
 
-* {
+*,
+*::after,
+*::before {
   margin: 0;
   padding: 0;
-  box-sizing: border-box; /* box sizing box model changes the box model so that border and padding are no longer added to the total width or total height that we specify for a box */
+  box-sizing: inherit;
 }
 
 html {
   font-size: 62.5%;
 }
-
-
 
 /* We apply the font styles inside body because of inheritance */
 body {
@@ -28,6 +28,7 @@ body {
   line-height: 1.7;
   color: #777;
   padding: 3em;
+  box-sizing: border-box; /* box sizing box model changes the box model so that border and padding are no longer added to the total width or total height that we specify for a box */
 }
 
 .header {
@@ -44,17 +45,17 @@ body {
   clip-path: polygon(0 0, 100% 0, 100% 75%, 0 100%);
 }
 
-.logo-box {
+.header__logo-box {
   position: absolute;
   top: 4rem; /* These are in relation to the parent element, this case the header. */
   left: 4rem;
 }
 
-.logo {
+.header__logo {
   height: 3.5rem;
 }
 
-.text-box {
+.header__text-box {
   position: absolute;
   top: 40%;   /* These values are in relation to the parent elements */
   left: 50%;
@@ -70,7 +71,7 @@ body {
   margin-bottom: 6rem;
 }
 
-.heading-primary-main {
+.heading-primary--main {
   display: block;    /* Changes the span from an in-line element to a block which takes the full width of the parent element */
   font-size: 6rem;
   font-weight: 400;
@@ -86,7 +87,7 @@ body {
   */
 }
 
-.heading-primary-sub {
+.heading-primary--sub {
   display: block;     /* Changes the span from an in-line element to a block which takes the full width of the parent element */
   font-size: 2rem;
   font-weight: 700;
@@ -171,7 +172,7 @@ body {
   /* ?, horizontal offset, vertical offset, color */
 }
 
-.btn-white {
+.btn--white {
   background-color: #fff;
   color: #777;
 }
@@ -189,7 +190,7 @@ body {
   transition: all .4s;
 }
 
-.btn-white::after {
+.btn--white::after {
   background-color: #fff;
 }
 
@@ -198,7 +199,7 @@ body {
   opacity: 0;
 }
 
-.btn-animated {
+.btn--animated {
   animation: moveInBottom .5s ease-out .75s;
   animation-fill-mode: backwards;
 }
