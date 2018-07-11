@@ -12,7 +12,7 @@
     left: 0;
     width: 100%;
     backface-visibility: hidden;
-    border-radius: 3px;
+    border-radius: $border-radius;
     overflow: hidden;
     box-shadow: $soft-shadow;
 
@@ -55,8 +55,8 @@
     background-blend-mode: screen;
     -webkit-clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
     clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
-    border-top-left-radius: 3px;
-    border-top-right-radius: 3px;
+    border-top-left-radius: $border-radius;
+    border-top-right-radius: $border-radius;
     
 
     &--1 {
