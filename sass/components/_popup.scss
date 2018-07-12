@@ -15,7 +15,7 @@
     @include center-position;
     
     // z index and position fixed are not required here because the parent element has both of those properties, __content will automatically be rendered above and fixed because of the parent elements properties
-    width: 75%;
+    width: 80%;
     background-color: $color-white; 
     -webkit-box-shadow: 0 2rem 4rem rgba($color-black, .4); 
             box-shadow: 0 2rem 4rem rgba($color-black, .4);
@@ -31,7 +31,6 @@
   &__left {
     width: 33.333333%;
     display: table-cell;
-    
   }
 
   &__right {
@@ -90,6 +89,147 @@
 
     &:hover {
       color: $color-primary;
+    }
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+  @include respond(tab-land) {
+    height: 100vh;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba($color-black, 0.85);
+    z-index: 4000;
+
+    opacity: 0;
+    visibility: hidden;
+    transition: all .3s;
+
+    // opacity: 1;
+    // visibility: visible;
+    // transition: all .3s;
+
+    &__content {
+      @include center-position;
+      
+      // z index and position fixed are not required here because the parent element has both of those properties, __content will automatically be rendered above and fixed because of the parent elements properties
+      width: 95%;
+      height: auto;
+      background-color: $color-white; 
+      -webkit-box-shadow: 0 2rem 4rem rgba($color-black, .4); 
+              box-shadow: 0 2rem 4rem rgba($color-black, .4);
+      border-radius: 3px;
+      display: block;
+      overflow: visible;
+
+      opacity: 0;
+      transform: translate(-50%, -50%) scale(0.25); // transform properties overwrite each other, the one inside the center-position mixin gets overwritten.
+      transition: all .4s .2s; // 3rd argument is a delay
+    }
+
+    &__left {
+      position: absolute;
+      width: 100%;
+      bottom: 0;
+      left:0;
+    }
+
+    &__right {
+      @include respond(phone) {
+        padding: 1rem 2rem;
+      }
+    }
+    
+
+
+    &__img {
+      width: 55%;
+      position: absolute;
+
+      @include respond(phone) {
+        width: 54%;
+      }
+
+      &:first-child {
+        top: -2px;
+        -webkit-box-shadow: 0 2rem 4rem rgba($color-black, .4); 
+                box-shadow: 0 2rem 4rem rgba($color-black, .4);
+      }
+
+      &:last-child {
+        right: 0;
+        top: -70px;
+        -webkit-box-shadow: 0 2rem 4rem rgba($color-black, .4); 
+                box-shadow: 0 2rem 4rem rgba($color-black, .4);
+      }
+    }
+
+
+
+    &__text {
+      font-size: 1.8rem;
+      margin-bottom: 4rem;
+
+      -webkit-column-count: 1;
+
+              column-count: 1; // new browser features for seperating text
+      -webkit-column-gap: 4rem;
+              column-gap: 4rem;
+      -webkit-column-rule: 1px solid $color-grey-light-2;
+              column-rule: 1px solid $color-grey-light-2; // like border
+
+      -webkit-hyphens: auto;
+      -ms-hyphens: auto;
+      hyphens: auto; // places hyphens in the text for you, remember to set in the html file <html lang="en"> note: this is currently not supported on chrome for windows.
+    
+      @include respond(phone) {
+        font-size: 1.5rem;
+      }
+    }
+
+    // Open states
+    &:target {
+      opacity: 1;
+      visibility: visible; //When the anchor (a) is clicked #popup gets added to the url of the page. Using the property target listens for when the id value gets added to the target
+    }
+
+    &:target &__content {
+      opacity: 1;
+      transform: translate(-50%, -104%) scale(1);
+
+      @include respond(phone) {
+        transform: translate(-50%, -66%) scale(1);
+      }
+    }
+
+    &__close {
+      &:link,
+      &:visited {
+        color: $color-grey-dark;
+        position: absolute;
+        top: 2.5rem;
+        right: 2.5rem;
+        font-size: 3rem;
+        text-decoration: none;
+        display: inline-block;
+        transition: all .2s;
+        line-height: .5; // if element is tall for some reason check this property
+      }
+
+      &:hover {
+        color: $color-primary;
+      }
     }
   }
 }
