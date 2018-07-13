@@ -54,6 +54,13 @@
       transform: scale(1.05) translateY(-.5rem);
       box-shadow: 0 2.5rem 4rem rgba($color-black, .5);
       z-index: 20;
+
+      @include respond(tab-port) {
+        outline: .3rem solid $color-primary;
+        outline-offset: .5rem;
+        transform: scale(1.5) translateY(-.5rem);
+        z-index: 200;
+      }
     }
 
     // &:not(hover) {
@@ -64,6 +71,10 @@
 
   &:hover &__photo:not(:hover) {
     transform: scale(.95);
+
+    @include respond(tab-port) {
+      transform: scale(1.1) translateY(-.5rem);
+    }
   }
 }
 // .composition:hover &__photo:not(:hover) { }
