@@ -11,6 +11,7 @@
     top: 0;
     left: 0;
     width: 100%;
+    -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
     border-radius: $border-radius;
     overflow: hidden;
@@ -53,22 +54,79 @@
     background-size: cover;
     height: 23rem;
     background-blend-mode: screen;
-    -webkit-clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
-    clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
     border-top-left-radius: $border-radius;
     border-top-right-radius: $border-radius;
+
+    @supports (clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%)) or (-webkit-clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%)) {
+      -webkit-clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+      clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+    }
     
 
     &--1 {
-      background-image: linear-gradient(to right bottom, $color-secondary-light, $color-secondary-dark), url(../img/nat-5.jpg);
+      background-image: url(../img/nat-5.jpg);
+
+      &::before {
+        content: "";
+        position: absolute;
+        height: 44.4%;
+        width: 100%;
+        background: rgba(255, 158, 48, 0.5); /* THIS IS WHAT EVER OVERLAY COLOUR YOU WANT */
+        background-size: cover;
+      }
+
+      @supports (background-blend-mode: screen){
+        background-image: linear-gradient(to right bottom, $color-secondary-light, $color-secondary-dark), url(../img/nat-5.jpg);
+        background-blend-mode: screen;
+
+        &::before {
+          background: none;
+        }
+      }
     }
 
     &--2 {
-      background-image: linear-gradient(to right bottom, $color-primary-light, $color-primary-dark), url(../img/nat-6.jpg);
+      background-image: url(../img/nat-6.jpg);
+
+      &::before {
+        content: "";
+        position: absolute;
+        height: 44.4%;
+        width: 100%;
+        background: rgba(117, 255, 135, 0.5); /* THIS IS WHAT EVER OVERLAY COLOUR YOU WANT */
+        background-size: cover;
+      }
+
+      @supports (background-blend-mode: screen){
+        background-image: linear-gradient(to right bottom, $color-primary-light, $color-primary-dark), url(../img/nat-6.jpg);
+        background-blend-mode: screen;
+
+        &::before {
+          background: none;
+        }
+      }
     }
 
     &--3 {
-      background-image: linear-gradient(to right bottom, $color-tertiary-light, $color-tertiary-dark), url(../img/nat-7.jpg);
+      background-image: url(../img/nat-7.jpg);
+
+      &::before {
+        content: "";
+        position: absolute;
+        height: 44.4%;
+        width: 100%;
+        background: rgba(60, 133, 255, 0.5); /* THIS IS WHAT EVER OVERLAY COLOUR YOU WANT */
+        background-size: cover;
+      }
+
+      @supports (background-blend-mode: screen){
+        background-image: linear-gradient(to right bottom, $color-tertiary-light, $color-tertiary-dark), url(../img/nat-7.jpg);
+        background-blend-mode: screen;
+
+        &::before {
+          background: none;
+        }
+      }
     }
   }
 
@@ -82,8 +140,6 @@
     top: 12rem;
     right: 2rem;
     width: 50%;
-
-    
   }
 
   &__heading-span {

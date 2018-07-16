@@ -26,13 +26,22 @@
     width: 15rem;  
     height: 15rem;
     float: left;
-    -webkit-shape-outside: circle(50% at 50% 50%);
-    shape-outside: circle(50% at 50% 50%);   // must be floated, must have height & width
-    clip-path: circle(50% at 50% 50%);
-
+    
     transform: translate(-3rem) skewX(12deg);
-
     position: relative;
+    overflow: hidden;
+    border-radius: 50%;
+
+    -webkit-backface-visibility:hidden;
+    backface-visibility: hidden;
+
+    @supports(clip-path: circle(50% at 50% 50%)) or (-webkit-clip-path: circle(50% at 50% 50%)) {
+      -webkit-clip-path: circle(50% at 50% 50%);
+      clip-path: circle(50% at 50% 50%);
+      -webkit-shape-outside: circle(50% at 50% 50%);
+      shape-outside: circle(50% at 50% 50%);   // must be floated, must have height & width
+      border-radius: none;
+    }
 
     @include respond(phone) {
       transform: translate(-3rem) skewX(0);
@@ -44,6 +53,9 @@
     transform: translateX(-3.6rem) scale(1.4);
     backface-visibility: hidden;
     transition: all .5s;
+    
+    -webkit-backface-visibility:hidden;
+    backface-visibility: hidden;
   }
 
   &__caption {
