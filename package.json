@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "watch:sass": "node-sass sass/main.scss css/style.css -w",
-    "devserver": "live-server --no-css-inject",
+    "devserver": "live-server",
     "start": "npm-run-all --parallel watch:sass devserver",
     
     "compile:sass": "node-sass sass/main.scss css/style.comp.css",
